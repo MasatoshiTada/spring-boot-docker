@@ -1,0 +1,18 @@
+version: '3'
+services:
+  boot-api:
+    build: ./boot-api
+    ports:
+    - "8090:8090"
+    depends_on:
+      - postgresql94
+  boot-ui:
+    build: ./boot-ui
+    ports:
+    - "8080:8080"
+    depends_on:
+      - boot-api
+  postgresql94:
+    image: postgresql94:latest
+    ports:
+    - "5432:5432"
